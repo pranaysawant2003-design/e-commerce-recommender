@@ -14,21 +14,6 @@ if current_dir not in sys.path:
 try:
     from src.recommend import Recommender
     from src.embed_items import compute_text_embeddings, compute_image_embeddings
-except ImportError:
-    st.error("❌ Could not import required modules. Please check your file structure.")
-    st.info("Make sure you have:")
-    st.code("""
-    Repository Structure:
-    ├── app_streamlit.py (this file)
-    ├── src/
-    │   ├── recommend.py
-    │   ├── embed_items.py
-    │   ├── model.py
-    │   └── ... (other files)
-    ├── requirements.txt
-    └── data files
-    """)
-    st.stop()
 
 ROOT = os.path.dirname(__file__)
 CSV_PATH = os.path.join(ROOT, 'products_preprocessed.csv')
@@ -162,3 +147,4 @@ with tab3:
                     st.caption(f"Score: {row.get('score', 0):.3f}")
         except Exception as e:
             st.error(f"❌ Error in image search: {str(e)}")
+
